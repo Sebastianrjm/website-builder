@@ -1,0 +1,41 @@
+/* Estilos base */
+
+.app-generador {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: var(--font-main);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.reset-button {
+    background: #ff3a3a;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.reset-button:hover {
+    opacity: 0.8;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #666;
+}

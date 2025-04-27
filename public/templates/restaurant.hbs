@@ -1,0 +1,17 @@
+<div class="template-restaurant" style="--primary-color: {{primaryColor}}">
+  <header>
+    <h1>{{siteTitle}}</h1>
+    {{#if slogan}}<p class="slogan">{{slogan}}</p>{{/if}}
+  </header>
+  
+  {{#if menuSections}}
+  <section class="menu">
+    <h2>Nuestro Menú</h2>
+    <ul>
+      {{#each menuSections}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </section>
+  {{/if}}
+</div>

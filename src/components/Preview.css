@@ -1,0 +1,85 @@
+.form-generador {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-picker input {
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.color-value {
+    font-size: 14px;
+    color: #555;
+}
+
+.typography-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.typography-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-input {
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.size-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #333;
+}
