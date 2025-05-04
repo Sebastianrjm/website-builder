@@ -6,20 +6,18 @@ const Preview = ({ config }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Validar si config y templateType están definidos
     if (!config?.templateType) {
       console.error('Error: templateType no está definido en config', config);
       setError('Por favor selecciona un tipo de plantilla para previsualizar.');
       return;
     }
 
-    // Intentar cargar la plantilla
     loadTemplate(config.templateType, config)
-      .then(templateContent => {
+      .then((templateContent) => {
         setContent(templateContent);
-        setError(null); // Limpiar errores si se carga correctamente
+        setError(null);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error('Error loading template:', err);
         setError('Ocurrió un error al cargar la plantilla.');
         setContent('<div class="error">Error al cargar la plantilla.</div>');

@@ -1,40 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Formulario.css';
 
 const Formulario = ({ config, setConfig }) => {
+  const [menuSections, setMenuSections] = useState(config.menuSections || []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setConfig(prev => ({
+    setConfig((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleTypographyChange = (property, value) => {
-    setConfig(prev => ({
+    setConfig((prev) => ({
       ...prev,
-      [property]: value
+      [property]: value,
     }));
   };
 
-  const templateOptions = [
-    { value: 'restaurant', label: '🍽️ Restaurante' },
-    { value: 'ecommerce', label: '🛒 Tienda Online' },
-    { value: 'professional', label: '💼 Servicios Profesionales' },
-    { value: 'blog', label: '✏️ Blog Personal' }
-  ];
+  const handleMenuChange = (index, value) => {
+    const updatedSections = [...menuSections];
+    updatedSections[index] = value;
+    setMenuSections(updatedSections);
+    setConfig((prev) => ({
+      ...prev,
+      menuSections: updatedSections,
+    }));
+  };
+
+  const addMenuSection = () => {
+    setMenuSections([...menuSections, '']);
+  };
+
+  const removeMenuSection = (index) => {
+    const updatedSections = menuSections.filter((_, i) => i !== index);
+    setMenuSections(updatedSections);
+    setConfig((prev) => ({
+      ...prev,
+      menuSections: updatedSections,
+    }));
+  };
 
   const fontOptions = [
     { value: 'Arial, sans-serif', label: 'Arial' },
     { value: "'Helvetica Neue', sans-serif", label: 'Helvetica' },
-    { value: "'Georgia', serif", label: 'Georgia' }
+    { value: "'Georgia', serif", label: 'Georgia' },
   ];
 
   const typographyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-  const fontSizes = ['12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px'];
 
   return (
     <form className="form-generador">
+      {/* Selección de tipo de plantilla */}
       <div className="form-group">
         <label>Tipo de Plantilla:</label>
         <select
@@ -43,15 +61,15 @@ const Formulario = ({ config, setConfig }) => {
           onChange={handleChange}
           className="form-select"
         >
-          {templateOptions.map(opt => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
+          <option value="restaurant">🍽️ Restaurante</option>
+          <option value="ecommerce">🛒 Tienda Online</option>
+          <option value="professional">💼 Servicios Profesionales</option>
+          <option value="blog">✏️ Blog Personal</option>
         </select>
       </div>
 
-      <div className="form-group">
+      {/* Configuración de colores */}
+      <div className="form-group compact-input">
         <label>Color Principal:</label>
         <div className="color-picker">
           <input
@@ -60,64 +78,120 @@ const Formulario = ({ config, setConfig }) => {
             value={config.primaryColor}
             onChange={handleChange}
           />
-          <span className="color-value">{config.primaryColor}</span>
+          <span className="color-preview" style={{ backgroundColor: config.primaryColor }}></span>
+        </div>
+      </div>
+      <div className="form-group compact-input">
+        <label>Color Secundario:</label>
+        <div className="color-picker">
+          <input
+            type="color"
+            name="secondaryColor"
+            value={config.secondaryColor}
+            onChange={handleChange}
+          />
+          <span className="color-preview" style={{ backgroundColor: config.secondaryColor }}></span>
+        </div>
+      </div>
+      <div className="form-group compact-input">
+        <label>Color de Fondo:</label>
+        <div className="color-picker">
+          <input
+            type="color"
+            name="backgroundColor"
+            value={config.backgroundColor}
+            onChange={handleChange}
+          />
+          <span className="color-preview" style={{ backgroundColor: config.backgroundColor }}></span>
+        </div>
+      </div>
+      <div className="form-group compact-input">
+        <label>Color del Texto:</label>
+        <div className="color-picker">
+          <input
+            type="color"
+            name="textColor"
+            value={config.textColor}
+            onChange={handleChange}
+          />
+          <span className="color-preview" style={{ backgroundColor: config.textColor }}></span>
         </div>
       </div>
 
+      {/* Eslogan del sitio */}
       <div className="form-group">
-        <label>Fuente:</label>
+        <label>Eslogan del Sitio:</label>
+        <input
+          type="text"
+          name="slogan"
+          value={config.slogan || ''}
+          onChange={handleChange}
+          placeholder="Escribe un eslogan para tu sitio"
+        />
+      </div>
+
+      {/* Fuente */}
+      <div className="form-group">
+        <label>Fuente Principal:</label>
         <select
           name="fontFamily"
           value={config.fontFamily}
           onChange={handleChange}
-          className="form-select"
         >
-          {fontOptions.map(opt => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
+          {fontOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
             </option>
           ))}
         </select>
       </div>
 
-      <div className="form-group typography-controls">
+      {/* Configuración de colores y tamaños de encabezados */}
+      <div className="form-group">
         <label>Estilo Tipográfico:</label>
         {typographyTags.map((tag) => (
           <div key={tag} className="typography-group">
-            <label>{tag.toUpperCase()}</label>
-            <div className="input-group">
+            <label>{tag.toUpperCase()}:</label>
+            <div className="compact-input">
+              <label>Color:</label>
               <input
                 type="color"
                 value={config[`${tag}Color`] || '#000000'}
                 onChange={(e) => handleTypographyChange(`${tag}Color`, e.target.value)}
-                className="color-input"
               />
-              <select
-                value={config[`${tag}Size`] || '16px'}
-                onChange={(e) => handleTypographyChange(`${tag}Size`, e.target.value)}
-                className="size-select"
-              >
-                {fontSizes.map(size => (
-                  <option key={size} value={size}>{size}</option>
-                ))}
-              </select>
+              <label>Tamaño (px):</label>
+              <input
+                type="number"
+                min="10"
+                max="100"
+                step="1"
+                value={parseInt(config[`${tag}Size`], 10) || 16}
+                onChange={(e) => handleTypographyChange(`${tag}Size`, `${e.target.value}px`)}
+              />
             </div>
           </div>
         ))}
       </div>
 
-      <div className="form-group checkbox-group">
-        <label>
-          <input
-            type="checkbox"
-            checked={config.showPreview}
-            onChange={() => setConfig(prev => ({
-              ...prev,
-              showPreview: !prev.showPreview
-            }))}
-          />
-          Mostrar Previsualización
-        </label>
+      {/* Menú */}
+      <div className="form-group">
+        <label>Secciones del Menú:</label>
+        {menuSections.map((section, index) => (
+          <div key={index} className="menu-section">
+            <input
+              type="text"
+              value={section}
+              onChange={(e) => handleMenuChange(index, e.target.value)}
+              placeholder={`Sección ${index + 1}`}
+            />
+            <button type="button" onClick={() => removeMenuSection(index)}>
+              ❌
+            </button>
+          </div>
+        ))}
+        <button type="button" onClick={addMenuSection}>
+          ➕ Agregar Sección
+        </button>
       </div>
     </form>
   );

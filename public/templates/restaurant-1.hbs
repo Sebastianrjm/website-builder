@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Plantilla restaurant</title>
-    <link rel="stylesheet" href="styles/restaurant.css">
-</head>
-
-<body style="--primary-color: {{primaryColor}}; background-color: {{backgroundColor}};">
-    <header style="color: {{textColor}}; font-family: {{fontFamily}}">
+<div class="template-restaurant" style="--primary-color: {{primaryColor}}; background-color: {{backgroundColor}};">
+  <header style="color: {{textColor}}; font-family: {{fontFamily}}">
     <h1 style="color: {{h1Color}}; font-size: {{h1Size}};">{{siteTitle}}</h1>
     {{#if slogan}}
       <p style="color: {{h2Color}}; font-size: {{h2Size}};">{{slogan}}</p>
     {{/if}}
   </header>
+  
   {{#if menuSections}}
   <section class="menu">
     <h2 style="color: {{h2Color}}; font-size: {{h2Size}};">Nuestro Menú</h2>
@@ -33,6 +25,4 @@
       {{#if instagram}}<li><a href="{{instagram}}" target="_blank">Instagram</a></li>{{/if}}
     </ul>
   </footer>
-</body>
-
-</html>
+</div>
