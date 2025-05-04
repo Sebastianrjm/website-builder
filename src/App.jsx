@@ -7,17 +7,16 @@ import './styles/globals.css';
 function App() {
   // Estado global que comparten Formulario y Preview
   const [config, setConfig] = useState({
-    templateType: 'restaurant', // Este campo es obligatorio
-    primaryColor: '#3a86ff', // Color principal del sitio
-    secondaryColor: '#ff6f61', // Color secundario
-    backgroundColor: '#ffffff', // Color de fondo
-    textColor: '#000000', // Color del texto
-    fontFamily: 'Arial, sans-serif', // Fuente del texto
-    slogan: '', // Eslogan del sitio
-    menuSections: [], // Secciones del menú
-    showPreview: true, // Controla si se muestra la previsualización
-    siteTitle: 'Mi Sitio', // Título del sitio
-    // Tamaños de encabezados
+    templateType: 'restaurant', 
+    primaryColor: '#3a86ff', 
+    secondaryColor: '#ff6f61', 
+    backgroundColor: '#ffffff', 
+    textColor: '#000000', 
+    fontFamily: 'Arial, sans-serif',
+    slogan: '', 
+    menuSections: [], 
+    showPreview: true,
+    siteTitle: 'Mi Sitio', 
     h1Size: '32px',
     h2Size: '28px',
     h3Size: '24px',
@@ -26,25 +25,22 @@ function App() {
     h6Size: '14px',
   });
 
-  // Renderizar plantilla
   const renderTemplate = () => {
     console.log('Plantilla renderizada con configuración:', config);
   };
 
-  // Restablecer configuración
   const resetTemplate = () => {
     setConfig({
-      templateType: 'restaurant', // Este campo es obligatorio
-      primaryColor: '#3a86ff', // Color principal del sitio
-      secondaryColor: '#ff6f61', // Color secundario
-      backgroundColor: '#ffffff', // Color de fondo
-      textColor: '#000000', // Color del texto
-      fontFamily: 'Arial, sans-serif', // Fuente del texto
-      slogan: '', // Eslogan del sitio
-      menuSections: [], // Secciones del menú
-      showPreview: true, // Controla si se muestra la previsualización
-      siteTitle: 'Mi Sitio', // Título del sitio
-      // Tamaños de encabezados
+      templateType: 'restaurant', 
+      primaryColor: '#3a86ff', 
+      secondaryColor: '#ff6f61', 
+      backgroundColor: '#ffffff', 
+      textColor: '#000000', 
+      fontFamily: 'Arial, sans-serif',
+      slogan: '', 
+      menuSections: [], 
+      showPreview: true,
+      siteTitle: 'Mi Sitio', 
       h1Size: '32px',
       h2Size: '28px',
       h3Size: '24px',
@@ -61,7 +57,6 @@ function App() {
         <header className="app-header">
           <h2>Personaliza tu sitio en minutos</h2>
         </header>
-
         <main>
           {/* Sección del formulario */}
           <section className="form-section">
@@ -72,7 +67,6 @@ function App() {
               resetTemplate={resetTemplate}
             />
           </section>
-
           {/* Previsualización en tiempo real */}
           {config.showPreview && (
             <section className="preview-section">
