@@ -1,5 +1,22 @@
 import { useState, useEffect } from 'react';
-import { loadTemplate } from '../utils/templateLoader';
+import Handlebars from 'handlebars';
+
+// Función para cargar las plantillas desde la carpeta `public/templates`
+const loadTemplate = async (templateType, config) => {
+  try {
+    const response = await fetch(`/templates/${templateType}.hbs`);
+    if (!response.ok) {
+      throw new Error(`Failed to load template: ${templateType}`);
+    }
+
+    const templateSource = await response.text();
+    const template = Handlebars.compile(templateSource);
+    return template(config);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
 
 const Preview = ({ config }) => {
   const [content, setContent] = useState('<div>Selecciona una plantilla</div>');
@@ -24,6 +41,16 @@ const Preview = ({ config }) => {
       });
   }, [config]);
 
+useEffect(() => {
+  const root = document.documentElement;
+
+  // Aplicar variables CSS
+  root.style.setProperty('--background-color', config.backgroundColor || '#ffffff');
+  root.style.setProperty('--text-color', config.textColor || '#000000');
+  root.style.setProperty('--text-align', config.textAlign || 'center');
+  root.style.setProperty('--primary-color', config.primaryColor || '#0000ff');
+}, [config]);
+
   return (
     <div className="preview-container" role="region" aria-live="polite">
       {error ? (
@@ -31,7 +58,11 @@ const Preview = ({ config }) => {
           {error}
         </div>
       ) : (
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: content,
+          }}
+        />
       )}
     </div>
   );

@@ -52,6 +52,39 @@ const Formulario = ({ config, setConfig }) => {
 
   return (
     <form className="form-generador">
+      {/* Campo para el título de la página web */}
+      <div className="form-group">
+        <label>Título de la Página Web:</label>
+        <input
+          type="text"
+          name="siteTitle"
+          value={config.siteTitle || ''}
+          onChange={handleChange}
+          placeholder="Escribe el título de tu página web"
+        />
+      </div>
+
+      {/* Opciones de SEO */}
+      <div className="form-group">
+        <label>Meta Título:</label>
+        <input
+          type="text"
+          name="metaTitle"
+          value={config.metaTitle || ''}
+          onChange={handleChange}
+          placeholder="Título para SEO"
+        />
+      </div>
+      <div className="form-group">
+        <label>Meta Descripción:</label>
+        <textarea
+          name="metaDescription"
+          value={config.metaDescription || ''}
+          onChange={handleChange}
+          placeholder="Descripción para SEO"
+        />
+      </div>
+
       {/* Selección de tipo de plantilla */}
       <div className="form-group">
         <label>Tipo de Plantilla:</label>
@@ -71,52 +104,41 @@ const Formulario = ({ config, setConfig }) => {
       {/* Configuración de colores */}
       <div className="form-group compact-input">
         <label>Color Principal:</label>
-        <div className="color-picker">
-          <input
-            type="color"
-            name="primaryColor"
-            value={config.primaryColor}
-            onChange={handleChange}
-          />
-          <span className="color-preview" style={{ backgroundColor: config.primaryColor }}></span>
-        </div>
+        <input
+          type="color"
+          name="primaryColor"
+          value={config.primaryColor}
+          onChange={handleChange}
+        />
       </div>
       <div className="form-group compact-input">
         <label>Color Secundario:</label>
-        <div className="color-picker">
-          <input
-            type="color"
-            name="secondaryColor"
-            value={config.secondaryColor}
-            onChange={handleChange}
-          />
-          <span className="color-preview" style={{ backgroundColor: config.secondaryColor }}></span>
-        </div>
+        <input
+          type="color"
+          name="secondaryColor"
+          value={config.secondaryColor}
+          onChange={handleChange}
+        />
       </div>
       <div className="form-group compact-input">
         <label>Color de Fondo:</label>
-        <div className="color-picker">
-          <input
-            type="color"
-            name="backgroundColor"
-            value={config.backgroundColor}
-            onChange={handleChange}
-          />
-          <span className="color-preview" style={{ backgroundColor: config.backgroundColor }}></span>
-        </div>
+        <input
+          type="color"
+          name="backgroundColor"
+          value={config.backgroundColor}
+          onChange={handleChange}
+        />
       </div>
       <div className="form-group compact-input">
         <label>Color del Texto:</label>
-        <div className="color-picker">
-          <input
-            type="color"
-            name="textColor"
-            value={config.textColor}
-            onChange={handleChange}
-          />
-          <span className="color-preview" style={{ backgroundColor: config.textColor }}></span>
-        </div>
+        <input
+          type="color"
+          name="textColor"
+          value={config.textColor}
+          onChange={handleChange}
+        />
       </div>
+      
 
       {/* Eslogan del sitio */}
       <div className="form-group">
@@ -157,7 +179,9 @@ const Formulario = ({ config, setConfig }) => {
               <input
                 type="color"
                 value={config[`${tag}Color`] || '#000000'}
-                onChange={(e) => handleTypographyChange(`${tag}Color`, e.target.value)}
+                onChange={(e) =>
+                  handleTypographyChange(`${tag}Color`, e.target.value)
+                }
               />
               <label>Tamaño (px):</label>
               <input
@@ -166,7 +190,9 @@ const Formulario = ({ config, setConfig }) => {
                 max="100"
                 step="1"
                 value={parseInt(config[`${tag}Size`], 10) || 16}
-                onChange={(e) => handleTypographyChange(`${tag}Size`, `${e.target.value}px`)}
+                onChange={(e) =>
+                  handleTypographyChange(`${tag}Size`, `${e.target.value}px`)
+                }
               />
             </div>
           </div>
