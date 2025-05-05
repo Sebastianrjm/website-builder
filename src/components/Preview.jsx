@@ -38,8 +38,23 @@ const Preview = ({ config }) => {
           <!DOCTYPE html>
           <html lang="es">
           <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="description" content="{{metaDescription}}">
+          <meta name="author" content="{{author}}">
+          <meta property="og:title" content="{{siteTitle}}">
+          <meta property="og:description" content="{{metaDescription}}">
+          <meta property="og:type" content="website">
+          <meta property="og:url" content="{{siteUrl}}">
+          <meta property="og:image" content="{{ogImage}}">
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:title" content="{{siteTitle}}">
+          <meta name="twitter:description" content="{{metaDescription}}">
+          <meta name="twitter:image" content="{{ogImage}}">
+          <title>{{siteTitle}}</title>
+          <link rel="icon" href="{{favicon}}">
+          <link rel="stylesheet" href="styles/restaurant.css">
+          <link rel="stylesheet" href="styles/base.css">
             <title>${config.siteTitle || 'Vista Previa'}</title>
             <style>
               body {
