@@ -35,7 +35,7 @@ const Preview = ({ config }) => {
         const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
 
         // Seleccionar el archivo CSS correspondiente a la plantilla
-        const templateCSS = `/templates/styles/${config.templateType}.css`;
+        const templateCSS = `/styles/${config.templateType}.css`;
 
         // Crear el contenido HTML completo para el iframe
         const iframeContent = `
@@ -45,7 +45,7 @@ const Preview = ({ config }) => {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>${config.siteTitle || 'Vista Previa'}</title>
-            <link rel="stylesheet" href="/templates/styles/base.css"> <!-- Estilos básicos -->
+            <link rel="stylesheet" href="/styles/base.css"> <!-- Estilos básicos -->
             <link rel="stylesheet" href="${templateCSS}"> <!-- Estilos específicos de la plantilla -->
             <link href="https://fonts.googleapis.com/css2?family=${config.fontFamily.replace(/ /g, '+')}:wght@400;700&display=swap" rel="stylesheet">
             <meta name="description" content="{{metaDescription}}">
@@ -92,11 +92,22 @@ const Preview = ({ config }) => {
       });
   }, [config])
   
-  const handleDownload = async () => {
-    const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
-    const templateContent = iframeDoc.documentElement.outerHTML; // Captura el contenido del iframe
-    await downloadTemplate(config.templateType, config, templateContent);
-  };
+ const handleDownload = async () => {
+  const iframeDoc = iframeRef.current?.contentDocument || iframeRef.current?.contentWindow?.document;
+
+  if (!iframeDoc) {
+    console.error('El iframe no está disponible.');
+    return;
+  }
+
+  const templateContent = iframeDoc.documentElement.outerHTML; // Captura el contenido del iframe
+  if (!templateContent) {
+    console.error('No se pudo capturar el contenido de la plantilla.');
+    return;
+  }
+
+  await downloadTemplate(config.templateType, config, templateContent);
+};
 
   return (
     <div className="preview-container" style={{ marginTop: '20px' }}>
@@ -115,12 +126,12 @@ const Preview = ({ config }) => {
           }}
         ></iframe>
       )}
-    </div>
-    <div className="preview-container">
+      <div className="preview-container">
       {/* Botón para descargar la plantilla */}
       <button onClick={handleDownload} className="download-button">
         Descargar Plantilla
       </button>
+    </div>
     </div>
   );
 };
