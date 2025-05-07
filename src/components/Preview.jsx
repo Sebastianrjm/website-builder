@@ -100,12 +100,16 @@ const Preview = ({ config }) => {
     return;
   }
 
-  const templateContent = iframeDoc.documentElement.outerHTML; // Captura el contenido del iframe
-  if (!templateContent) {
-    console.error('No se pudo capturar el contenido de la plantilla.');
-    return;
-  }
+  // Capturar el contenido HTML del iframe
+  let templateContent = iframeDoc.documentElement.outerHTML;
 
+  // Ajustar las rutas de los estilos en el contenido HTML
+  templateContent = templateContent.replace(
+    /\/templates\/styles\//g, // Busca todas las referencias a "/templates/styles/"
+    './styles/'                 // Reemplaza con la ruta relativa "styles/"
+  );
+
+  // Llamar a la función downloadTemplate con el contenido ajustado
   await downloadTemplate(config.templateType, config, templateContent);
 };
 
