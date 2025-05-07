@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GoogleFontsSelector from './GoogleFontsSelector';
 import './Formulario.css';
 
 const Formulario = ({ config, setConfig }) => {
@@ -152,21 +153,11 @@ const Formulario = ({ config, setConfig }) => {
         />
       </div>
 
-      {/* Fuente */}
       <div className="form-group">
-        <label>Fuente Principal:</label>
-        <select
-          name="fontFamily"
-          value={config.fontFamily}
-          onChange={handleChange}
-        >
-          {fontOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Tipografia */}
+      <GoogleFontsSelector config={config} setConfig={setConfig} />
+    </div>
+
 
       {/* Configuración de colores y tamaños de encabezados */}
       <div className="form-group">
