@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Handlebars from 'handlebars';
+import { downloadTemplate } from '../utils/downloadTemplate';
 
 // Función para cargar las plantillas desde la carpeta `public/templates`
 const loadTemplate = async (templateType, config) => {
@@ -89,7 +90,13 @@ const Preview = ({ config }) => {
         console.error('Error loading template:', err);
         setError('Ocurrió un error al cargar la plantilla.');
       });
-  }, [config]);
+  }, [config])
+  
+  const handleDownload = async () => {
+    const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+    const templateContent = iframeDoc.documentElement.outerHTML; // Captura el contenido del iframe
+    await downloadTemplate(config.templateType, config, templateContent);
+  };
 
   return (
     <div className="preview-container" style={{ marginTop: '20px' }}>
@@ -108,6 +115,12 @@ const Preview = ({ config }) => {
           }}
         ></iframe>
       )}
+    </div>
+    <div className="preview-container">
+      {/* Botón para descargar la plantilla */}
+      <button onClick={handleDownload} className="download-button">
+        Descargar Plantilla
+      </button>
     </div>
   );
 };
