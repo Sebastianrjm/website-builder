@@ -19,6 +19,11 @@ h6,
     margin: 0.5em 0;
 }
 
+h1 {
+    display: flex;
+    justify-content: center
+}
+
 p {
     margin: 0.5em 0;
 }
