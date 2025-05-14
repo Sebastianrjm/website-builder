@@ -1,33 +1,202 @@
-<body style="background-color: {{backgroundColor}}; color: {{textColor}}; font-family: {{fontFamily}};">
+<body>
+  <style>
+        body {
+            background-color: {{backgroundColor}};
+            color: {{textColor}};
+            font-family: {{fontFamily}};
+            font-size: {{fontSize}};
+        }
 
-  <!-- Header -->
-  <header style="font-family: {{fontFamily}};">
-        <h1 style="color: {{h1Color}}; font-size: {{h1Size}};">{{siteTitle}}</h1>
-        {{#if slogan}}
-          <p style="color: {{textColor}}; font-size: {{h2Size}};" id="slogan">{{slogan}}</p>
-        {{/if}}
+        header h1 {
+            color: {{h1Color}};
+            font-size: {{h1Size}};
+        }
+
+        header p {
+            color: {{textColor}};
+            font-size: {{sloganFontSize}};
+        }
+
+        footer {
+            background-color: {{footerBackgroundColor}};
+        }
+
+        footer a,
+        footer p{
+          color: {{footerTextColor}};
+        }
+
+        nav{
+          background-color: {{footerBackgroundColor}}
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: {{primaryColor}};
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: {{footerTextColor}};
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="#" alt="logo" class="logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {{#each menuSections}}
+                    <li class="nav-item">
+                      <a href="{{this.href}}" class="nav-link">{{this.text}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="text-center text-white d-flex flex-column justify-content-center align-items-center" style="background: url('header-image.jpg') no-repeat center center/cover; height: 80vh;">
+        <div class="bg-dark bg-opacity-50 p-4 rounded">
+              <h1 class="display-4">{{siteTitle}}</h1>
+              {{#if slogan}}
+              <p class="lead">{{slogan}}</p>
+              {{/if}}
+            <div class="d-flex gap-3 justify-content-center">
+                <a href="#" class="btn btn-primary">Contáctanos</a>
+                <a href="#" class="btn btn-secondary">Ver Menú</a>
+            </div>
+        </div>
     </header>
 
-  <!-- Menu Section -->
-  {{#if menuSections}}
-  <section class="menu">
-    <h2 style="color: {{h2Color}}; font-size: {{h2Size}};">Nuestro Menú</h2>
-    <ul>
-      {{#each menuSections}}
-      <li>{{this}}</li>
-      {{/each}}
-    </ul>
-  </section>
-  {{/if}}
+    <!-- Sección -->
+    <section class="container py-5">
+        <!-- Article 1 -->
+        <article class="text-center mb-5">
+            <h2 class="mb-4">Una experiencia gastronómica única</h2>
+            <p class="mb-4">Descubre platos preparados con los ingredientes más frescos y de la mejor calidad.</p>
+            <div class="d-flex gap-3 justify-content-center">
+                <a href="#" class="btn btn-primary">Reservar</a>
+                <a href="#" class="btn btn-secondary">Ver Menú</a>
+            </div>
+        </article>
 
-  <!-- Footer -->
-  <footer style="background-color: {{secondaryColor}}; color: {{textColor}};">
-    <p>Síguenos en:</p>
-    <ul>
-      {{#if facebook}}<li><a href="{{facebook}}" target="_blank">Facebook</a></li>{{/if}}
-      {{#if twitter}}<li><a href="{{twitter}}" target="_blank">Twitter</a></li>{{/if}}
-      {{#if instagram}}<li><a href="{{instagram}}" target="_blank">Instagram</a></li>{{/if}}
-    </ul>
-    <p>&copy; {{year}} {{author}}</p>
-  </footer>
+        <!-- Article 2 -->
+        <article class="text-center mb-5">
+            <h2 class="mb-4">Un espacio especial para ti</h2>
+            <p>Disfruta de un ambiente cálido y acogedor donde la buena comida y la compañía se encuentran.</p>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="row g-4">
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow">
+                    <h3 class="mb-3">Nuestros valores</h3>
+                    <p>Compromiso con la calidad, pasión por la comida y atención excepcional.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow">
+                    <h3 class="mb-3">Ingredientes de calidad</h3>
+                    <p>Seleccionamos los mejores ingredientes para ofrecerte una experiencia única.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow">
+                    <h3 class="mb-3">Ambiente acogedor</h3>
+                    <p>El lugar ideal para disfrutar de momentos memorables con tus seres queridos.</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Slider -->
+    <section class="slider-wrapper my-5">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="image1.jpg" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="image2.jpg" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="image3.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h3>Sobre Nosotros</h3>
+                    <p>Ofrecemos una experiencia gastronómica única con los mejores ingredientes y un ambiente acogedor.</p>
+                </div>
+                <div class="col-md-3">
+                    <h3>Links Rápidos</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class=" text-decoration-none">Inicio</a></li>
+                        <li><a href="#" class=" text-decoration-none">Menú</a></li>
+                        <li><a href="#" class=" text-decoration-none">Reservar</a></li>
+                        <li><a href="#" class=" text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Contacto</h3>
+                    <p>Dirección: Calle Falsa 123</p>
+                    <p>Teléfono: +123 456 789</p>
+                    <p>Email: contacto@restaurant.com</p>
+                </div>
+                <div class="col-md-3">
+                    <h3>Síguenos</h3>
+                    <div>
+                        <ul class="list-unstyled">
+                          {{#each footerSocial}}
+                          <li>
+                              <a href="{{this.href}}" target="_blank" class="text-decoration-none">{{this.label}}</a>
+                          </li>
+                          {{/each}}
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p>© 2025 Restaurant. Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

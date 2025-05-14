@@ -55,7 +55,6 @@ nav {
 
 header {
     display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px;
@@ -63,11 +62,54 @@ header {
     color: #fff;
 }
 
+.header-div {
+    background-color: lawngreen;
+    width: 40%;
+    height: 80vh;
+    display: flex;
+    /* Añadido */
+    align-items: center;
+    /* Añadido */
+}
+
+.header-div2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.header-img {
+    background-color: red;
+    width: 60%;
+    height: 80vh
+}
+
 
 /* SECTIONS */
 
 section {
     padding: 20px;
+}
+
+article {
+    margin: 200px 0!important
+}
+
+article h2 {
+    width: 40%;
+}
+
+.article-1 {
+    display: flex;
+    justify-content: space-between
+}
+
+.article1-div {
+    width: 40%
+}
+
+.heading-center {
+    margin: 0 auto
 }
 
 .article-3 {

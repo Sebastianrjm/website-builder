@@ -1,33 +1,105 @@
-<body style="background-color: {{backgroundColor}}; color: {{textColor}}; font-family: {{fontFamily}};">
+<!DOCTYPE html>
+<html lang="es">
 
-  <!-- Header -->
-  <header style="font-family: {{fontFamily}};">
-        <h1 style="color: {{h1Color}}; font-size: {{h1Size}};">{{siteTitle}}</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{siteTitle}}</title>
+    <style>
+        /* Configuración de estilos globales */
+        body {
+            background-color: {{backgroundColor}};
+            color: {{textColor}};
+            font-family: {{fontFamily}};
+            font-size: {{fontSize}};
+        }
+
+        header h1 {
+            color: {{h1Color}};
+            font-size: {{h1Size}};
+        }
+
+        header p {
+            color: {{textColor}};
+            font-size: {{sloganFontSize}};
+        }
+
+        footer {
+            background-color: {{footerBackgroundColor}};
+            color: {{footerTextColor}};
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: {{primaryColor}};
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: {{footerTextColor}};
+            margin-right: 10px;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>{{siteTitle}}</h1>
         {{#if slogan}}
-          <p style="color: {{textColor}}; font-size: {{h2Size}};" id="slogan">{{slogan}}</p>
+        <p>{{slogan}}</p>
         {{/if}}
     </header>
 
-  <!-- Menu Section -->
-  {{#if menuSections}}
-  <section class="menu">
-    <h2 style="color: {{h2Color}}; font-size: {{h2Size}};">Nuestro Menú</h2>
-    <ul>
-      {{#each menuSections}}
-      <li>{{this}}</li>
-      {{/each}}
-    </ul>
-  </section>
-  {{/if}}
+    <!-- Navegación -->
+    <nav>
+        <ul>
+            {{#each menuSections}}
+            <li>
+                <a href="{{this.href}}">{{this.text}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </nav>
 
-  <!-- Footer -->
-  <footer style="background-color: {{secondaryColor}}; color: {{textColor}};">
-    <p>Síguenos en:</p>
-    <ul>
-      {{#if facebook}}<li><a href="{{facebook}}" target="_blank">Facebook</a></li>{{/if}}
-      {{#if twitter}}<li><a href="{{twitter}}" target="_blank">Twitter</a></li>{{/if}}
-      {{#if instagram}}<li><a href="{{instagram}}" target="_blank">Instagram</a></li>{{/if}}
-    </ul>
-    <p>&copy; {{year}} {{author}}</p>
-  </footer>
+    <!-- Contenido principal -->
+    <main>
+        <section>
+            <h2>Bienvenidos a nuestro restaurante</h2>
+            <p>Explora la mejor experiencia gastronómica con los ingredientes más frescos y un ambiente acogedor.</p>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="social-links">
+            <h3>Síguenos en nuestras redes sociales:</h3>
+            <ul>
+                {{#each footerSocial}}
+                <li>
+                    <a href="{{this.href}}" target="_blank">{{this.label}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <p>&copy; {{year}} {{author}}</p>
+    </footer>
 </body>
+
+</html>

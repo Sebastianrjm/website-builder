@@ -4,6 +4,7 @@ import './Formulario.css';
 
 const Formulario = ({ config, setConfig }) => {
   const [menuSections, setMenuSections] = useState(config.menuSections || []);
+  const [footerSocial, setFooterSocial] = useState(config.footerSocial || []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,9 +21,9 @@ const Formulario = ({ config, setConfig }) => {
     }));
   };
 
-  const handleMenuChange = (index, value) => {
+  const handleMenuChange = (index, field, value) => {
     const updatedSections = [...menuSections];
-    updatedSections[index] = value;
+    updatedSections[index] = { ...updatedSections[index], [field]: value };
     setMenuSections(updatedSections);
     setConfig((prev) => ({
       ...prev,
@@ -31,7 +32,7 @@ const Formulario = ({ config, setConfig }) => {
   };
 
   const addMenuSection = () => {
-    setMenuSections([...menuSections, '']);
+    setMenuSections([...menuSections, { text: '', href: '' }]);
   };
 
   const removeMenuSection = (index) => {
@@ -43,11 +44,28 @@ const Formulario = ({ config, setConfig }) => {
     }));
   };
 
-  const fontOptions = [
-    { value: 'Arial, sans-serif', label: 'Arial' },
-    { value: "'Helvetica Neue', sans-serif", label: 'Helvetica' },
-    { value: "'Georgia', serif", label: 'Georgia' },
-  ];
+  const handleFooterSocialChange = (index, field, value) => {
+    const updatedSocial = [...footerSocial];
+    updatedSocial[index] = { ...updatedSocial[index], [field]: value };
+    setFooterSocial(updatedSocial);
+    setConfig((prev) => ({
+      ...prev,
+      footerSocial: updatedSocial,
+    }));
+  };
+
+  const addFooterSocial = () => {
+    setFooterSocial([...footerSocial, { label: '', href: '' }]);
+  };
+
+  const removeFooterSocial = (index) => {
+    const updatedSocial = footerSocial.filter((_, i) => i !== index);
+    setFooterSocial(updatedSocial);
+    setConfig((prev) => ({
+      ...prev,
+      footerSocial: updatedSocial,
+    }));
+  };
 
   const typographyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
@@ -113,15 +131,6 @@ const Formulario = ({ config, setConfig }) => {
         />
       </div>
       <div className="form-group compact-input">
-        <label>Color Secundario:</label>
-        <input
-          type="color"
-          name="secondaryColor"
-          value={config.secondaryColor}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="form-group compact-input">
         <label>Color de Fondo:</label>
         <input
           type="color"
@@ -139,7 +148,41 @@ const Formulario = ({ config, setConfig }) => {
           onChange={handleChange}
         />
       </div>
-      
+      <div className="form-group compact-input">
+        <label>Color del Footer:</label>
+        <input
+          type="color"
+          name="footerBackgroundColor"
+          value={config.footerBackgroundColor}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group compact-input">
+        <label>Color del Texto en el Footer:</label>
+        <input
+          type="color"
+          name="footerTextColor"
+          value={config.footerTextColor}
+          onChange={handleChange}
+        />
+      </div>
+
+      {/* Selección de tamaño de fuente global */}
+      <div className="form-group">
+        <label>Tamaño de Fuente Global (px):</label>
+        <input
+          type="number"
+          name="fontSize"
+          min="10"
+          max="50"
+          value={parseInt(config.fontSize, 10) || 16}
+          onChange={(e) =>
+            handleChange({
+              target: { name: 'fontSize', value: `${e.target.value}px` },
+            })
+          }
+        />
+      </div>
 
       {/* Eslogan del sitio */}
       <div className="form-group">
@@ -153,11 +196,27 @@ const Formulario = ({ config, setConfig }) => {
         />
       </div>
 
+      {/* Tamaño de fuente del eslogan */}
       <div className="form-group">
-      {/* Tipografia */}
-      <GoogleFontsSelector config={config} setConfig={setConfig} />
-    </div>
+        <label>Tamaño de Fuente del Eslogan (px):</label>
+        <input
+          type="number"
+          name="sloganFontSize"
+          min="10"
+          max="50"
+          value={parseInt(config.sloganFontSize, 10) || 16}
+          onChange={(e) =>
+            handleChange({
+              target: { name: 'sloganFontSize', value: `${e.target.value}px` },
+            })
+          }
+        />
+      </div>
 
+      <div className="form-group">
+        {/* Tipografia */}
+        <GoogleFontsSelector config={config} setConfig={setConfig} />
+      </div>
 
       {/* Configuración de colores y tamaños de encabezados */}
       <div className="form-group">
@@ -193,21 +252,66 @@ const Formulario = ({ config, setConfig }) => {
       {/* Menú */}
       <div className="form-group">
         <label>Secciones del Menú:</label>
-        {menuSections.map((section, index) => (
-          <div key={index} className="menu-section">
+        <ul className="menu-list">
+          {menuSections.map((section, index) => (
+            <li key={index} className="menu-item">
+              <input
+                type="text"
+                value={section.text || ''}
+                onChange={(e) =>
+                  handleMenuChange(index, 'text', e.target.value)
+                }
+                placeholder={`Texto de la Sección ${index + 1}`}
+              />
+              <input
+                type="url"
+                value={section.href || ''}
+                onChange={(e) =>
+                  handleMenuChange(index, 'href', e.target.value)
+                }
+                placeholder={`Enlace de la Sección ${index + 1}`}
+              />
+              <button type="button" onClick={() => removeMenuSection(index)}>
+                ❌
+              </button>
+            </li>
+          ))}
+        </ul>
+        <button type="button" onClick={addMenuSection}>
+          ➕ Agregar Sección
+        </button>
+      </div>
+
+      {/* Redes Sociales del Footer */}
+      <div className="form-group">
+        <label>Redes Sociales en el Footer:</label>
+        {footerSocial.map((social, index) => (
+          <div key={index} className="footer-social">
+            <label>Etiqueta:</label>
             <input
               type="text"
-              value={section}
-              onChange={(e) => handleMenuChange(index, e.target.value)}
-              placeholder={`Sección ${index + 1}`}
+              value={social.label || ''}
+              onChange={(e) =>
+                handleFooterSocialChange(index, 'label', e.target.value)
+              }
+              placeholder="Nombre de la red social (ej. Facebook)"
             />
-            <button type="button" onClick={() => removeMenuSection(index)}>
+            <label>Enlace:</label>
+            <input
+              type="url"
+              value={social.href || ''}
+              onChange={(e) =>
+                handleFooterSocialChange(index, 'href', e.target.value)
+              }
+              placeholder="URL de la red social"
+            />
+            <button type="button" onClick={() => removeFooterSocial(index)}>
               ❌
             </button>
           </div>
         ))}
-        <button type="button" onClick={addMenuSection}>
-          ➕ Agregar Sección
+        <button type="button" onClick={addFooterSocial}>
+          ➕ Agregar Red Social
         </button>
       </div>
     </form>

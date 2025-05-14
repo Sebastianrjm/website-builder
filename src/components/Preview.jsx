@@ -61,17 +61,8 @@ const Preview = ({ config }) => {
             <meta name="twitter:image" content="{{ogImage}}">
             <title>{{siteTitle}}</title>
             <link rel="icon" href="{{favicon}}">
-            <style>
-              body {
-                background-color: ${config.backgroundColor || '#ffffff'};
-                color: ${config.textColor || '#000000'};
-                font-family: ${config.fontFamily || 'Arial, sans-serif'};
-                text-align: ${config.textAlign || 'center'};
-              }
-              h1, h2, h3, h4, h5, h6 {
-                color: ${config.primaryColor || '#0000ff'};
-              }
-            </style>
+            <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
           </head>
           <body>
             ${templateContent}
