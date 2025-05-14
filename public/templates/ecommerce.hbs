@@ -36,10 +36,6 @@
             color: {{primaryColor}};
         }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
-
         .social-links a {
             text-decoration: none;
             color: {{footerTextColor}};
@@ -47,6 +43,42 @@
 
         .social-links a:hover {
             text-decoration: underline;
+        }
+        .header-div1 {
+            background-color: {{primaryColor}}
+        }
+        .btn-primary {
+            background-color: {{buttonPrimaryColor}};
+            border-color: {{buttonPrimaryColor}};
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: {{buttonPrimaryHoverColor}};
+            border-color: {{buttonPrimaryHoverColor}};
+        }
+
+        .btn-secondary {
+            background-color: {{buttonSecondaryColor}};
+            border-color: {{buttonSecondaryColor}};
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: {{buttonSecondaryHoverColor}};
+            border-color: {{buttonSecondaryHoverColor}};
+        }
+        h2{
+            color: {{h2Color}};
+            font-size: {{h2Size}};
+        }
+        h3{
+            color: {{h3Color}};
+            font-size: {{h3Size}};
+        }
+        h4{
+            color: {{h4Color}};
+            font-size: {{h4Size}};
         }
     </style>
     <!-- Navegación -->
@@ -71,28 +103,36 @@
     </nav>
 
     <!-- Encabezado -->
-    <header class="text-center text-white d-flex flex-column justify-content-center align-items-center" style="background: url('header-image.jpg') no-repeat center center/cover; height: 80vh;">
-        <div class="bg-dark bg-opacity-50 p-4 rounded">
+    <header class="d-flex flex-column flex-md-row justify-content-between align-items-center text-white">
+        <div class="p-4 text-center text-md-start header-div1">
               <h1 class="display-4">{{siteTitle}}</h1>
               {{#if slogan}}
               <p class="lead">{{slogan}}</p>
               {{/if}}
-            <div class="d-flex gap-3 justify-content-center">
+            <div class="d-flex gap-3 justify-content-center button-div">
                 <a href="#" class="btn btn-primary">Contáctanos</a>
                 <a href="#" class="btn btn-secondary">Ver Menú</a>
             </div>
         </div>
+        <div class=" d-md-block header-image">
+            <img src="#" alt="header-image">
+        </div>
     </header>
 
-    <!-- Sección -->
+     <!-- Sección -->
     <section class="container py-5">
         <!-- Article 1 -->
-        <article class="text-center mb-5">
-            <h2 class="mb-4">Una experiencia gastronómica única</h2>
-            <p class="mb-4">Descubre platos preparados con los ingredientes más frescos y de la mejor calidad.</p>
-            <div class="d-flex gap-3 justify-content-center">
-                <a href="#" class="btn btn-primary">Reservar</a>
-                <a href="#" class="btn btn-secondary">Ver Menú</a>
+        <article class="row align-items-center text-center text-md-start mb-5">
+            <div class="col-md-6">
+                <h2 class="mb-4">Una experiencia gastronómica única</h2>
+                <p class="mb-4">Descubre platos preparados con los ingredientes más frescos y de la mejor calidad.</p>
+                <div class="d-flex gap-3 justify-content-center button-div">
+                    <a href="#" class="btn btn-primary">Reservar</a>
+                    <a href="#" class="btn btn-secondary">Ver Menú</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="example-image.jpg" alt="Comida deliciosa" class="img-fluid rounded">
             </div>
         </article>
 
@@ -160,11 +200,11 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-3">
-                    <h3>Sobre Nosotros</h3>
+                    <h4>Sobre Nosotros</h4>
                     <p>Ofrecemos una experiencia gastronómica única con los mejores ingredientes y un ambiente acogedor.</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Links Rápidos</h3>
+                    <h4>Links Rápidos</h4>
                     <ul class="list-unstyled">
                         <li><a href="#" class=" text-decoration-none">Inicio</a></li>
                         <li><a href="#" class=" text-decoration-none">Menú</a></li>
@@ -173,13 +213,13 @@
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h3>Contacto</h3>
+                    <h4>Contacto</h4>
                     <p>Dirección: Calle Falsa 123</p>
                     <p>Teléfono: +123 456 789</p>
                     <p>Email: contacto@restaurant.com</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Síguenos</h3>
+                    <h4>Síguenos</h4>
                     <div>
                         <ul class="list-unstyled">
                           {{#each footerSocial}}
@@ -193,7 +233,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <p>© 2025 Restaurant. Todos los derechos reservados</p>
+            <p>© {{year}} {{author}}. Todos los derechos reservados</p>
         </div>
     </footer>
 

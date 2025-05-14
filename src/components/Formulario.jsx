@@ -67,6 +67,26 @@ const Formulario = ({ config, setConfig }) => {
     }));
   };
 
+  const darkenColor = (color, percentage) => {
+    const f = parseInt(color.slice(1), 16),
+      t = percentage < 0 ? 0 : 255,
+      p = percentage < 0 ? percentage * -1 : percentage,
+      R = f >> 16,
+      G = (f >> 8) & 0x00ff,
+      B = f & 0x0000ff;
+    return (
+      '#' +
+      (
+        0x1000000 +
+        (Math.round((t - R) * p) + R) * 0x10000 +
+        (Math.round((t - G) * p) + G) * 0x100 +
+        (Math.round((t - B) * p) + B)
+      )
+        .toString(16)
+        .slice(1)
+    );
+  };
+
   const typographyTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
   return (
@@ -214,7 +234,7 @@ const Formulario = ({ config, setConfig }) => {
       </div>
 
       <div className="form-group">
-        {/* Tipografia */}
+        {/* Tipografía */}
         <GoogleFontsSelector config={config} setConfig={setConfig} />
       </div>
 
@@ -313,6 +333,62 @@ const Formulario = ({ config, setConfig }) => {
         <button type="button" onClick={addFooterSocial}>
           ➕ Agregar Red Social
         </button>
+      </div>
+
+      {/* Selección de colores para botones */}
+      <div className="form-group">
+        <label>Color Primario del Botón:</label>
+        <input
+          type="color"
+          name="buttonPrimaryColor"
+          value={config.buttonPrimaryColor || '#0000ff'}
+          onChange={(e) => {
+            handleChange(e);
+            const hoverColor = darkenColor(e.target.value, -0.1); // Oscurece en un 10%
+            setConfig((prev) => ({
+              ...prev,
+              buttonPrimaryHoverColor: hoverColor,
+            }));
+          }}
+        />
+      </div>
+      <div className="form-group">
+        <label>Color Secundario del Botón:</label>
+        <input
+          type="color"
+          name="buttonSecondaryColor"
+          value={config.buttonSecondaryColor || '#ff0000'}
+          onChange={(e) => {
+            handleChange(e);
+            const hoverColor = darkenColor(e.target.value, -0.1); // Oscurece en un 10%
+            setConfig((prev) => ({
+              ...prev,
+              buttonSecondaryHoverColor: hoverColor,
+            }));
+          }}
+        />
+      </div>
+
+      {/* Autor y Año */}
+      <div className="form-group">
+        <label>Autor:</label>
+        <input
+          type="text"
+          name="author"
+          value={config.author || ''}
+          onChange={handleChange}
+          placeholder="Nombre del autor"
+        />
+      </div>
+      <div className="form-group">
+        <label>Año:</label>
+        <input
+          type="text"
+          name="year"
+          value={config.year || ''}
+          onChange={handleChange}
+          placeholder="Año actual"
+        />
       </div>
     </form>
   );

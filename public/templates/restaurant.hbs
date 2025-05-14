@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{siteTitle}}</title>
-    <style>
-        /* Configuración de estilos globales */
+<body>
+  <style>
         body {
             background-color: {{backgroundColor}};
             color: {{textColor}};
@@ -26,80 +19,224 @@
 
         footer {
             background-color: {{footerBackgroundColor}};
-            color: {{footerTextColor}};
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 15px;
+        footer a,
+        footer p{
+          color: {{footerTextColor}};
         }
 
-        nav ul li a {
+        nav{
+          background-color: {{footerBackgroundColor}}
+        }
+
+        nav a {
+            margin-right: 15px;
             text-decoration: none;
             color: {{primaryColor}};
-            font-weight: bold;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
         }
 
         .social-links a {
             text-decoration: none;
             color: {{footerTextColor}};
-            margin-right: 10px;
         }
 
         .social-links a:hover {
             text-decoration: underline;
         }
+        .header-div1 {
+            background-color: {{primaryColor}}
+        }
+        .btn-primary {
+            background-color: {{buttonPrimaryColor}};
+            border-color: {{buttonPrimaryColor}};
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: {{buttonPrimaryHoverColor}};
+            border-color: {{buttonPrimaryHoverColor}};
+        }
+
+        .btn-secondary {
+            background-color: {{buttonSecondaryColor}};
+            border-color: {{buttonSecondaryColor}};
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: {{buttonSecondaryHoverColor}};
+            border-color: {{buttonSecondaryHoverColor}};
+        }
+        h2{
+            color: {{h2Color}};
+            font-size: {{h2Size}};
+        }
+        h3{
+            color: {{h3Color}};
+            font-size: {{h3Size}};
+        }
+        h4{
+            color: {{h4Color}};
+            font-size: {{h4Size}};
+        }
     </style>
-</head>
-
-<body>
-    <!-- Encabezado -->
-    <header>
-        <h1>{{siteTitle}}</h1>
-        {{#if slogan}}
-        <p>{{slogan}}</p>
-        {{/if}}
-    </header>
-
     <!-- Navegación -->
-    <nav>
-        <ul>
-            {{#each menuSections}}
-            <li>
-                <a href="{{this.href}}">{{this.text}}</a>
-            </li>
-            {{/each}}
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="#" alt="logo" class="logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {{#each menuSections}}
+                    <li class="nav-item">
+                      <a href="{{this.href}}" class="nav-link">{{this.text}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <!-- Contenido principal -->
-    <main>
-        <section>
-            <h2>Bienvenidos a nuestro restaurante</h2>
-            <p>Explora la mejor experiencia gastronómica con los ingredientes más frescos y un ambiente acogedor.</p>
-        </section>
-    </main>
-
-    <!-- Pie de Página -->
-    <footer>
-        <div class="social-links">
-            <h3>Síguenos en nuestras redes sociales:</h3>
-            <ul>
-                {{#each footerSocial}}
-                <li>
-                    <a href="{{this.href}}" target="_blank">{{this.label}}</a>
-                </li>
-                {{/each}}
-            </ul>
+    <!-- Encabezado -->
+    <header class="d-flex flex-column flex-md-row justify-content-between align-items-center text-white">
+        <div class="p-4 text-center text-md-start header-div1">
+              <h1 class="display-4">{{siteTitle}}</h1>
+              {{#if slogan}}
+              <p class="lead">{{slogan}}</p>
+              {{/if}}
+            <div class="d-flex gap-3 justify-content-center button-div">
+                <a href="#" class="btn btn-primary">Contáctanos</a>
+                <a href="#" class="btn btn-secondary">Ver Menú</a>
+            </div>
         </div>
-        <p>&copy; {{year}} {{author}}</p>
-    </footer>
-</body>
+        <div class=" d-md-block header-image">
+            <img src="#" alt="header-image">
+        </div>
+    </header>
 
-</html>
+     <!-- Sección -->
+    <section class="container py-5">
+        <!-- Article 1 -->
+        <article class="row align-items-center text-center text-md-start mb-5">
+            <div class="col-md-6">
+                <h2 class="mb-4">Una experiencia gastronómica única</h2>
+                <p class="mb-4">Descubre platos preparados con los ingredientes más frescos y de la mejor calidad.</p>
+                <div class="d-flex gap-3 justify-content-center button-div">
+                    <a href="#" class="btn btn-primary">Reservar</a>
+                    <a href="#" class="btn btn-secondary">Ver Menú</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="example-image.jpg" alt="Comida deliciosa" class="img-fluid rounded">
+            </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="text-center mb-5">
+            <h2 class="mb-4">Un espacio especial para ti</h2>
+            <p>Disfruta de un ambiente cálido y acogedor donde la buena comida y la compañía se encuentran.</p>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="row g-4">
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow">
+                    <h3 class="mb-3">Nuestros valores</h3>
+                    <p>Compromiso con la calidad, pasión por la comida y atención excepcional.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow">
+                    <h3 class="mb-3">Ingredientes de calidad</h3>
+                    <p>Seleccionamos los mejores ingredientes para ofrecerte una experiencia única.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow">
+                    <h3 class="mb-3">Ambiente acogedor</h3>
+                    <p>El lugar ideal para disfrutar de momentos memorables con tus seres queridos.</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Slider -->
+    <section class="slider-wrapper my-5">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="image1.jpg" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="image2.jpg" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="image3.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h4>Sobre Nosotros</h4>
+                    <p>Ofrecemos una experiencia gastronómica única con los mejores ingredientes y un ambiente acogedor.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Links Rápidos</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class=" text-decoration-none">Inicio</a></li>
+                        <li><a href="#" class=" text-decoration-none">Menú</a></li>
+                        <li><a href="#" class=" text-decoration-none">Reservar</a></li>
+                        <li><a href="#" class=" text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Contacto</h4>
+                    <p>Dirección: Calle Falsa 123</p>
+                    <p>Teléfono: +123 456 789</p>
+                    <p>Email: contacto@restaurant.com</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Síguenos</h4>
+                    <div>
+                        <ul class="list-unstyled">
+                          {{#each footerSocial}}
+                          <li>
+                              <a href="{{this.href}}" target="_blank" class="text-decoration-none">{{this.label}}</a>
+                          </li>
+                          {{/each}}
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p>© {{year}} {{author}}. Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>

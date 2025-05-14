@@ -55,12 +55,60 @@ nav {
 
 header {
     display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px;
     background: url('header-image.jpg') no-repeat center center/cover;
     color: #fff;
+}
+
+.header-div1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    height: 80vh;
+}
+
+.header-div1 h1,
+.header-div1 p {
+    text-align: center
+}
+
+.header-image {
+    background-color: red;
+    width: 60%;
+    height: 80vh;
+}
+
+.header-image img {
+    width: 100%;
+    height: 100%
+}
+
+@media (max-width: 768px) {
+    .header-div1 {
+        width: 100%
+    }
+    .button-div {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .button-div a {
+        width: 60%;
+        margin: 0 auto;
+    }
+    .header-image {
+        background-color: red;
+        width: 100%;
+    }
+}
+
+@media (max-width: 267px) {
+    .button-div a {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 
@@ -70,18 +118,40 @@ section {
     padding: 20px;
 }
 
-.article-3 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+article {
+    margin: 200px 0 !important;
 }
 
-.div-article {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+article h2,
+article p {
+    text-align: center;
+}
+
+.article-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.article1-div {
+    width: 40%;
+}
+
+.heading-center {
+    margin: 0 auto;
+}
+
+
+/* MEDIA QUERY FOR RESPONSIVE TITLES */
+
+@media (max-width: 768px) {
+    article h2 {
+        width: 100%;
+        text-align: center;
+    }
+    .article-1 {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 
@@ -93,4 +163,8 @@ footer {
     padding: 40px 20px;
     font-size: 14px;
     text-align: center;
+}
+
+footer a {
+    color: #d4d4d4;
 }
