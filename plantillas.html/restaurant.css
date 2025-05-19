@@ -62,26 +62,41 @@ header {
     color: #fff;
 }
 
-.header-div {
-    background-color: lawngreen;
-    width: 40%;
-    height: 80vh;
-    display: flex;
-    /* Añadido */
-    align-items: center;
-    /* Añadido */
-}
-
-.header-div2 {
+.header-div1 {
     display: flex;
     flex-direction: column;
-    justify-content: center
+    justify-content: center;
+    width: 40%;
+    height: 80vh;
 }
 
-.header-img {
+.header-div1 h1,
+.header-div1 p {
+    text-align: center
+}
+
+.header-image {
     background-color: red;
     width: 60%;
-    height: 80vh
+    height: 80vh;
+}
+
+@media (max-width: 768px) {
+    .header-div1 {
+        width: 100%
+    }
+    .button-div {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .button-div a {
+        width: 60%;
+        margin: 0 auto
+    }
+    .header-image {
+        background-color: red;
+        width: 100%;
+    }
 }
 
 
@@ -92,38 +107,39 @@ section {
 }
 
 article {
-    margin: 200px 0!important
+    margin: 200px 0 !important;
 }
 
-article h2 {
-    width: 40%;
+article h2,
+article p {
+    text-align: center;
 }
 
 .article-1 {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .article1-div {
-    width: 40%
+    width: 40%;
 }
 
 .heading-center {
-    margin: 0 auto
+    margin: 0 auto;
 }
 
-.article-3 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
 
-.div-article {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* MEDIA QUERY FOR RESPONSIVE TITLES */
+
+@media (max-width: 768px) {
+    article h2 {
+        width: 100%;
+        text-align: center;
+    }
+    .article-1 {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 
