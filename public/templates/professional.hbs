@@ -1,34 +1,161 @@
 <body>
+  <style>
+        body {
+            background-color: {{backgroundColor}};
+            color: {{textColor}};
+            font-family: {{fontFamily}};
+            font-size: {{fontSize}};
+        }
 
+        header h1 {
+            color: {{h1Color}};
+            font-size: {{h1Size}};
+        }
+
+        header p {
+            color: {{h1Color}};
+            font-size: {{sloganFontSize}};
+        }
+
+        footer {
+            background-color: {{footerBackgroundColor}};
+        }
+
+        footer a,
+        footer p{
+          color: {{footerTextColor}};
+        }
+
+        .navbar{
+          background-color: {{footerBackgroundColor}}
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: {{footerTextColor}};
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: {{footerTextColor}};
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        .btn-primary {
+            background-color: {{buttonPrimaryColor}};
+            border-color: {{buttonPrimaryColor}};
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: {{buttonPrimaryHoverColor}};
+            border-color: {{buttonPrimaryHoverColor}};
+        }
+
+        .btn-secondary {
+            background-color: {{buttonSecondaryColor}};
+            border-color: {{buttonSecondaryColor}};
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: {{buttonSecondaryHoverColor}};
+            border-color: {{buttonSecondaryHoverColor}};
+        }
+        h2{
+            color: {{h2Color}};
+            font-size: {{h2Size}};
+        }
+        h3{
+            color: {{h3Color}};
+            font-size: {{h3Size}};
+        }
+        h4{
+            color: {{h4Color}};
+            font-size: {{h4Size}};
+        }
+        h5{
+            color: {{h5Color}};
+            font-size: {{h5Size}};
+        }
+        h6{
+            color: {{h6Color}};
+            font-size: {{h6Size}};
+        }
+
+        .fondo{
+          background-color: {{primaryColor}}
+        }
+        .price{
+          background-color: {{primaryColor}}
+        }
+
+        .testimonial-img-wrap {
+          background: linear-gradient(135deg, {{primaryColor}} 0%, {{secondaryColor}} 100%);
+        }
+        .testimonial-slider .carousel-indicators .active {
+           border: 3px solid {{primaryColor}};
+        }
+        .testimonial-slider .carousel-indicators .active {
+           box-shadow: 0 0 0 4px {{secondaryColor}}
+        }
+        .testimonial-card{
+            border: 2px solid {{secondaryColor}}
+        }
+
+        .testimonial-slider .carousel-indicators .active .indicator-avatar {
+            transform: scale(1.22);
+            border-color: {{primaryColor}};
+        }
+
+        .testimonial-slider .carousel-indicators .active .indicator-avatar{
+            box-shadow: 0 2px 12px {{primaryColor}};
+        }
+
+        .indicator-avatar{
+            border: 1.5px solid {{secondaryColor}};
+        }
+
+        .testimonial-slider .carousel-indicators [data-bs-target]{
+            border: 2px solid {{secondaryColor}};
+        }
+  </style>
     <header class="header-slider-container">
-        <!-- Slider Bootstrap -->
-        <div id="mainHeaderCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" class="d-block w-100" alt="Imagen 1">
+        <!-- Swiper principal (header) -->
+        <div class="swiper main-header-swiper" id="mainHeaderSwiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1: Con texto principal -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h1 class="display-4 slide-title">{{siteTitle}}</h1>
+                                {{#if slogan}}
+                                <p class="lead slide-slogan">{{slogan}}</p>
+                                {{/if}}
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1400&q=80" class="d-block w-100" alt="Imagen 2">
+                <!-- Slide 2: Solo imagen -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1400&q=80');">
+                        <div class="slide-overlay"></div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1400&q=80" class="d-block w-100" alt="Imagen 3">
+                <!-- Slide 3: Solo imagen -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1400&q=80');">
+                        <div class="slide-overlay"></div>
+                    </div>
                 </div>
             </div>
-            <!-- Controles laterales -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#mainHeaderCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#mainHeaderCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
-            <!-- Indicadores -->
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#mainHeaderCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#mainHeaderCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#mainHeaderCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+            <!-- Controles Swiper -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
 
         <!-- Navbar sobre el slider -->
@@ -41,14 +168,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ms-auto">
-                      {{#each menuSections}}
-                      <li class="nav-item">
-                        <a href="{{this.href}}" class="nav-link">{{this.text}}</a>
-                      </li>
-                      {{/each}}
-                  </ul>
-              </div>
+                    <ul class="navbar-nav ms-auto">
+                    {{#each menuSections}}
+                    <li class="nav-item">
+                      <a href="{{this.href}}" class="nav-link">{{this.text}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -201,129 +328,69 @@
                 </button>
             </div>
             <div class="art5-div2">
-                <div id="cardCarousel" class="carousel slide card-slider" data-bs-ride="false">
-                    <div class="carousel-inner">
-                        <!-- Slide 0: Cards 1,2,3 -->
-                        <div class="carousel-item active">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 1">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 1</h5>
-                                            <p class="card-text">Descripción de la card 1.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-4 d-none d-md-block">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 2</h5>
-                                            <p class="card-text">Descripción de la card 2.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-4 d-none d-lg-block">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 3</h5>
-                                            <p class="card-text">Descripción de la card 3.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
+                <div class="swiper mySwiper" id="cardSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Card 1 -->
+                        <div class="swiper-slide">
+                            <div class="carousel-card card shadow mb-3">
+                                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card 1</h5>
+                                    <p class="card-text">Descripción de la card 1.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- Slide 1: Cards 2,3,4 -->
-                        <div class="carousel-item">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 2</h5>
-                                            <p class="card-text">Descripción de la card 2.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-4 d-none d-md-block">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 3</h5>
-                                            <p class="card-text">Descripción de la card 3.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-4 d-none d-lg-block">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 4">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 4</h5>
-                                            <p class="card-text">Descripción de la card 4.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
+                        <!-- Card 2 -->
+                        <div class="swiper-slide">
+                            <div class="carousel-card card shadow mb-3">
+                                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card 2</h5>
+                                    <p class="card-text">Descripción de la card 2.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- Slide 2: Cards 3,4,5 -->
-                        <div class="carousel-item">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 3</h5>
-                                            <p class="card-text">Descripción de la card 3.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
+                        <!-- Card 3 -->
+                        <div class="swiper-slide">
+                            <div class="carousel-card card shadow mb-3">
+                                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card 3</h5>
+                                    <p class="card-text">Descripción de la card 3.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
                                 </div>
-                                <div class="col-12 col-md-6 col-lg-4 d-none d-md-block">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 4">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 4</h5>
-                                            <p class="card-text">Descripción de la card 4.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="swiper-slide">
+                            <div class="carousel-card card shadow mb-3">
+                                <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card 4</h5>
+                                    <p class="card-text">Descripción de la card 4.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
                                 </div>
-                                <div class="col-12 col-lg-4 d-none d-lg-block">
-                                    <div class="card shadow mb-3 mx-2">
-                                        <img src="https://images.unsplash.com/photo-1444065381814-865dc9da92c0?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 5">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card 5</h5>
-                                            <p class="card-text">Descripción de la card 5.</p>
-                                            <a href="#" class="btn btn-primary">Ver más</a>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="swiper-slide">
+                            <div class="carousel-card card shadow mb-3">
+                                <img src="https://images.unsplash.com/photo-1444065381814-865dc9da92c0?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Card 5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card 5</h5>
+                                    <p class="card-text">Descripción de la card 5.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Indicadores: SOLO 3 para 3 slides -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Cards 1-3"></button>
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Cards 2-4"></button>
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Cards 3-5"></button>
-                    </div>
-                    <!-- Controles laterales -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+                    <!-- Botones de navegación -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Paginación (puntos) -->
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </article>
@@ -462,11 +529,11 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-3">
-                    <h4>Sobre Nosotros</h4>
+                    <h6>Sobre Nosotros</h6>
                     <p>Ofrecemos una experiencia gastronómica única con los mejores ingredientes y un ambiente acogedor.</p>
                 </div>
                 <div class="col-md-3">
-                    <h4>Links Rápidos</h4>
+                    <h6>Links Rápidos</h6>
                     <ul class="list-unstyled">
                         <li><a href="#" class=" text-decoration-none">Inicio</a></li>
                         <li><a href="#" class=" text-decoration-none">Menú</a></li>
@@ -475,13 +542,13 @@
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h4>Contacto</h4>
+                    <h6>Contacto</h6>
                     <p>Dirección: Calle Falsa 123</p>
                     <p>Teléfono: +123 456 789</p>
                     <p>Email: contacto@restaurant.com</p>
                 </div>
                 <div class="col-md-3">
-                    <h4>Síguenos</h4>
+                    <h6>Síguenos</h6>
                     <div>
                         <ul class="list-unstyled">
                           {{#each footerSocial}}
@@ -499,19 +566,9 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('cardCarousel');
-            if (carousel) {
-                bootstrap.Carousel.getOrCreateInstance(carousel, {
-                    interval: 4000,
-                    ride: 'carousel',
-                    pause: false
-                });
-            }
-        });
         document.addEventListener('DOMContentLoaded', function() {
             var tc = document.getElementById('testimonialCarousel');
             if (tc) {
@@ -558,6 +615,54 @@
                 passive: true
             });
             setTimeout(triggerAnimationIfVisible, 350);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper("#cardSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 24
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 24
+                }
+            },
+            autoplay: {
+                delay: 5000, // 5 segundos
+                disableOnInteraction: false // sigue moviéndose aunque el usuario interactúe
+            }
+        });
+
+         // Swiper principal (header)
+        var mainHeaderSwiper = new Swiper("#mainHeaderSwiper", {
+            loop: true,
+            effect: "slide",
+            navigation: {
+                nextEl: ".main-header-swiper .swiper-button-next",
+                prevEl: ".main-header-swiper .swiper-button-prev"
+            },
+            pagination: {
+                el: ".main-header-swiper .swiper-pagination",
+                clickable: true
+            },
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false
+            }
         });
     </script>
 </body>

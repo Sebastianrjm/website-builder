@@ -45,8 +45,6 @@ const Preview = ({ config }) => {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>${config.siteTitle || 'Vista Previa'}</title>
-            <link rel="stylesheet" href="/templates/styles/base.css"> <!-- Estilos básicos -->
-            <link rel="stylesheet" href="${templateCSS}"> <!-- Estilos específicos de la plantilla -->
             <link href="https://fonts.googleapis.com/css2?family=${config.fontFamily.replace(/ /g, '+')}:wght@400;700&display=swap" rel="stylesheet">
             <meta name="description" content="{{metaDescription}}">
             <meta name="author" content="{{author}}">
@@ -62,7 +60,10 @@ const Preview = ({ config }) => {
             <title>{{siteTitle}}</title>
             <link rel="icon" href="{{favicon}}">
             <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+            <link rel="stylesheet" href="/templates/styles/base.css"> <!-- Estilos básicos -->
+            <link rel="stylesheet" href="${templateCSS}"> <!-- Estilos específicos de la plantilla -->
           </head>
           <body>
             ${templateContent}

@@ -151,6 +151,15 @@ const Formulario = ({ config, setConfig }) => {
         />
       </div>
       <div className="form-group compact-input">
+        <label>Color Secundario:</label>
+        <input
+          type="color"
+          name="secondaryColor"
+          value={config.secondaryColor || '#FFA500'}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group compact-input">
         <label>Color de Fondo:</label>
         <input
           type="color"
