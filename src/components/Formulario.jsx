@@ -178,7 +178,7 @@ const Formulario = ({ config, setConfig }) => {
         />
       </div>
       <div className="form-group compact-input">
-        <label>Color del Footer:</label>
+        <label>Color del Footer y Navbar:</label>
         <input
           type="color"
           name="footerBackgroundColor"
