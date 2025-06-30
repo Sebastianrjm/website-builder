@@ -300,7 +300,7 @@ const Formulario = ({ config, setConfig }) => {
                 }
                 placeholder={`Enlace de la Sección ${index + 1}`}
               />
-              <button type="button" onClick={() => removeMenuSection(index)}>
+              <button type="button" className="red-button" onClick={() => removeMenuSection(index)}>
                 ❌
               </button>
             </li>
@@ -334,7 +334,7 @@ const Formulario = ({ config, setConfig }) => {
               }
               placeholder="URL de la red social"
             />
-            <button type="button" onClick={() => removeFooterSocial(index)}>
+            <button type="button" className="red-button" onClick={() => removeFooterSocial(index)}>
               ❌
             </button>
           </div>

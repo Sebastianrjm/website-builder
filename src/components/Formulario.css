@@ -117,3 +117,12 @@ button[type="button"] {
 button[type="button"]:hover {
     background-color: #45a049;
 }
+
+button.red-button {
+    background-color: #ff4d4d;
+    margin: 5px
+}
+
+button.red-button:hover {
+    background-color: #e60000;
+}
