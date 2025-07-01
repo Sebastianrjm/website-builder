@@ -377,6 +377,24 @@ const Formulario = ({ config, setConfig }) => {
           }}
         />
       </div>
+      <div className="form-group">
+        <label>Color image efecto Duo-tone:</label>
+        <input
+          type="color"
+          name="duoToneForeGround"
+          value={config.duoToneForeGround}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>Color fondo efecto Duo-tone:</label>
+        <input
+          type="color"
+          name="duoToneBase"
+          value={config.duoToneBase}
+          onChange={handleChange}
+        />
+      </div>
 
       {/* Autor y Año */}
       <div className="form-group">
