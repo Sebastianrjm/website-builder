@@ -1,7 +1,5 @@
 # Website Builder
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://webside-builder-b.netlify.app/)
-
 **Website Builder** es una aplicación web avanzada que permite a cualquier usuario crear y personalizar sitios web profesionales de manera visual y sencilla, exportando el resultado como código listo para usar. Este proyecto está diseñado para facilitar la generación de sitios web modernos mediante plantillas editables, formularios intuitivos y previsualización en tiempo real.
 
 🌐 **Accede a la app:**  
