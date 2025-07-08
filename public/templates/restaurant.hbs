@@ -1,5 +1,5 @@
 <body>
-  <style>
+    <style>
         body {
             background-color: {{backgroundColor}};
             color: {{textColor}};
@@ -7,13 +7,13 @@
             font-size: {{fontSize}};
         }
 
-        header h1 {
+         #h1 {
             color: {{h1Color}};
             font-size: {{h1Size}};
         }
 
-        header p {
-            color: {{textColor}};
+        #slogan {
+            color: {{h1Color}};
             font-size: {{sloganFontSize}};
         }
 
@@ -26,14 +26,10 @@
           color: {{footerTextColor}};
         }
 
-        nav{
-          background-color: {{footerBackgroundColor}}
-        }
-
         nav a {
             margin-right: 15px;
             text-decoration: none;
-            color: {{primaryColor}};
+            color: {{footerTextColor}};
         }
 
         .social-links a {
@@ -43,9 +39,6 @@
 
         .social-links a:hover {
             text-decoration: underline;
-        }
-        .header-div1 {
-            background-color: {{primaryColor}}
         }
         .btn-primary {
             background-color: {{buttonPrimaryColor}};
@@ -80,131 +73,538 @@
             color: {{h4Color}};
             font-size: {{h4Size}};
         }
+        h5{
+            color: {{h5Color}};
+            font-size: {{h5Size}};
+        }
+        h6{
+            color: {{h6Color}};
+            font-size: {{h6Size}};
+        }
+        :root{
+            --navbar-bg: {{footerBackgroundColor}};
+        }
+        .art5 .list-items .item .price-label,
+        .art5-img-label,
+        .art6-img-label,
+        .art6 .list-items .item .price-label{
+            background: {{primaryColor}}
+        }
+        .swiper-pagination-bullet,
+        .swiper-pagination-bullet-active {
+        background: {{primaryColor}};
+        }
     </style>
-    <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="#" alt="logo" class="logo" height="40">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">Mi Sitio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto">
                     {{#each menuSections}}
                     <li class="nav-item">
                       <a href="{{this.href}}" class="nav-link">{{this.text}}</a>
                     </li>
                     {{/each}}
                 </ul>
-            </div>
+                </div>
         </div>
     </nav>
 
-    <!-- Encabezado -->
-    <header class="d-flex flex-column flex-md-row justify-content-between align-items-center text-white">
-        <div class="p-4 text-center text-md-start header-div1">
-              <h1 class="display-4">{{siteTitle}}</h1>
-              {{#if slogan}}
-              <p class="lead">{{slogan}}</p>
+    <!-- Header con imagen gigante -->
+    <header class="hero-header d-flex align-items-center justify-content-center" data-aos="fade-in">
+        <div class="vineta">
+            <h1 id="h1" >{{siteTitle}}</h1>
+            {{#if slogan}}
+            <p id="slogan" >{{slogan}}</p>
               {{/if}}
-            <div class="d-flex gap-3 justify-content-center button-div">
-                <a href="#" class="btn btn-primary">Contáctanos</a>
-                <a href="#" class="btn btn-secondary">Ver Menú</a>
+            <div class="header-buttons" data-aos="fade-up" data-aos-delay="200">
+                <button class="header-button btn-primary" aria-label="ver menu">Ver menú</button>
+                <button class="header-button btn-secondary" aria-label="Reservar ahora">Reservar ahora</button>
             </div>
-        </div>
-        <div class=" d-md-block header-image">
-            <img src="#" alt="header-image">
         </div>
     </header>
 
-     <!-- Sección -->
-    <section class="container py-5">
-        <!-- Article 1 -->
-        <article class="row align-items-center text-center text-md-start mb-5">
-            <div class="col-md-6">
-                <h2 class="mb-4">Una experiencia gastronómica única</h2>
-                <p class="mb-4">Descubre platos preparados con los ingredientes más frescos y de la mejor calidad.</p>
-                <div class="d-flex gap-3 justify-content-center button-div">
-                    <a href="#" class="btn btn-primary">Reservar</a>
-                    <a href="#" class="btn btn-secondary">Ver Menú</a>
+    <section>
+        <article class="art1" data-aos="fade-up">
+            <div class="art1-card">
+                <div class="icon-card">
+                    <i class="bi bi-egg-fried"></i>
+                </div>
+                <div class="text-card">
+                    <h3>Desayunos deliciosos</h3>
+                    <p>Empieza el día con nuestros huevos y pan recién horneado.</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <img src="example-image.jpg" alt="Comida deliciosa" class="img-fluid rounded img-margin">
+            <div class="art1-card">
+                <div class="icon-card">
+                    <i class="bi bi-cup-straw"></i>
+                </div>
+                <div class="text-card">
+                    <h3>Bebidas Refrescantes</h3>
+                    <p>Disfruta de jugos naturales, smoothies y café gourmet.</p>
+                </div>
+            </div>
+            <div class="art1-card">
+                <div class="icon-card">
+                    <i class="bi bi-emoji-smile"></i>
+                </div>
+                <div class="text-card">
+                    <h3>Ambiente Familiar</h3>
+                    <p>Un espacio cómodo y seguro para toda la familia.</p>
+                </div>
+            </div>
+            <div class="art1-card">
+                <div class="icon-card">
+                    <i class="bi bi-basket"></i>
+                </div>
+                <div class="text-card">
+                    <h3>Platillos para llevar</h3>
+                    <p>Pide tus favoritos y llévalos contigo donde quieras.</p>
+                </div>
             </div>
         </article>
-
-        <!-- Article 2 -->
-        <article class="text-center mb-5">
-            <h2 class="mb-4">Un espacio especial para ti</h2>
-            <p>Disfruta de un ambiente cálido y acogedor donde la buena comida y la compañía se encuentran.</p>
+        <article class="art2" data-aos="fade-up">
+            <div>
+                <p class="p-art2">Echa un vistazo a la mejor comida.</p>
+            </div>
+            <div class="art2-title">
+                <h2>Principales especialidades</h2>
+                <div class="art2-buttons">
+                    <button class="art2-button btn-primary" aria-label="Reservar una mesa">Reserva una mesa</button>
+                    <button class="art2-button btn-secondary" aria-label="Ver menu completo">Menu completo</button>
+                </div>
+            </div>
         </article>
-
-        <!-- Article 3 -->
-        <article class="row g-4">
-            <div class="col-md-4">
-                <div class="p-4 bg-white rounded shadow">
-                    <h3 class="mb-3">Nuestros valores</h3>
-                    <p>Compromiso con la calidad, pasión por la comida y atención excepcional.</p>
+        <article class="art3" data-aos="fade-up">
+            <!-- Card 1 -->
+            <div class="art3-cards div1">
+                <div class="art3-cards-img-container">
+                    <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg" alt="card1-img" loading="lazy">
+                    <span class="art3-price-tag">$9.50</span>
+                </div>
+                <div class="cards-text">
+                    <h3>Omelette especial</h3>
+                    <p>Huevos frescos, queso y vegetales, servido con pan artesanal.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-4 bg-white rounded shadow">
-                    <h3 class="mb-3">Ingredientes de calidad</h3>
-                    <p>Seleccionamos los mejores ingredientes para ofrecerte una experiencia única.</p>
+            <!-- Card 2 -->
+            <div class="art3-cards div2">
+                <div class="art3-cards-img-container">
+                    <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg" alt="card2-img" loading="lazy">
+                    <span class="art3-price-tag">$13.00</span>
+                </div>
+                <div class="cards-text">
+                    <h3>Salmón a la plancha</h3>
+                    <p>Salmón fresco con toque cítrico, acompañado de ensalada gourmet.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-4 bg-white rounded shadow">
-                    <h3 class="mb-3">Ambiente acogedor</h3>
-                    <p>El lugar ideal para disfrutar de momentos memorables con tus seres queridos.</p>
+            <!-- Card 3 -->
+            <div class="art3-cards div3">
+                <div class="art3-cards-img-container">
+                    <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg" alt="card3-img" loading="lazy">
+                    <span class="art3-price-tag">$7.00</span>
+                </div>
+                <div class="cards-text">
+                    <h3>Ensalada César</h3>
+                    <p>Lechuga fresca, pollo, crutones y aderezo césar casero.</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="art3-cards div4">
+                <div class="art3-cards-img-container">
+                    <img src="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg" alt="card4-img" loading="lazy">
+                    <span class="art3-price-tag">$8.75</span>
+                </div>
+                <div class="cards-text">
+                    <h3>Pasta al pesto</h3>
+                    <p>Pasta artesanal con salsa pesto, piñones y parmesano.</p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="art3-cards div5">
+                <div class="art3-cards-img-container">
+                    <img src="https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg" alt="card5-img" loading="lazy">
+                    <span class="art3-price-tag">$6.90</span>
+                </div>
+                <div class="cards-text">
+                    <h3>Sándwich club</h3>
+                    <p>Pollo, jamón, queso, vegetales frescos y mayonesa especial.</p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="art3-cards div6">
+                <div class="art3-cards-img-container">
+                    <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg" alt="card6-img" loading="lazy">
+                    <span class="art3-price-tag">$5.50</span>
+                </div>
+                <div class="cards-text">
+                    <h3>Postre del día</h3>
+                    <p>Variedad de postres caseros, pregunta por la especialidad.</p>
+                </div>
+            </div>
+        </article>
+        <article class="art4" data-aos="fade-up">
+            <div class="art4-container">
+                <p>Platos deliciosos para ti</p>
+                <h2>Menu de comida</h2>
+                <p class="art4-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eaque vel, quas quae temporibus omnis tempora similique saepe non autem.</p>
+                <div class="art4-div">
+                    <div class="art4-div-div1">
+                        <i class="bi bi-chat-dots"></i>
+                        <h4>Escribenos</h4>
+                        <p>info@resturant.com</p>
+                    </div>
+                    <div class="art4-div-div2">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Encuentranos</h4>
+                        <p>info@resturant.com</p>
+                    </div>
+                    <div class="art4-div-div3">
+                        <i class="bi bi-telephone"></i>
+                        <h4>Llámanos</h4>
+                        <p>+02 3351569887</p>
+                    </div>
+                </div>
+                <button aria-label="Mas informacion" class="art4-button btn-secondary" >Leer mas</button>
+            </div>
+        </article>
+        <article class="art5" data-aos="fade-up">
+            <div class="art5-div-h">
+                <p>Disfrute de una auténtica experiencia gastronomica</p>
+                <h2>Nuestro menu completo</h2>
+            </div>
+            <div class="container-art5">
+                <div class="art5-div1">
+                    <div class="list-items">
+                        <div class="item">
+                            <h4>Pizza Margarita <span class="price-label">$8.90</span></h4>
+                            <p>Masa fina, salsa de tomate natural, queso mozzarella y hojas frescas de albahaca.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Hamburguesa Clásica <span class="price-label">$10.50</span></h4>
+                            <p>Carne de res a la parrilla, lechuga, tomate, cebolla y aderezo especial en pan artesanal.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Ensalada Griega <span class="price-label">$7.20</span></h4>
+                            <p>Mezcla de verdes, queso feta, aceitunas, tomate cherry y vinagreta de limón.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Lasagna de Carne <span class="price-label">$12.00</span></h4>
+                            <p>Capas de pasta, carne molida, salsa pomodoro y gratinado de quesos.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Crema de Calabaza <span class="price-label">$5.70</span></h4>
+                            <p>Suave crema de calabaza asada, toque de jengibre y crocante de pan.</p>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="list-items">
+                        <div class="item">
+                            <h4>Pollo al Curry <span class="price-label">$11.80</span></h4>
+                            <p>Pechuga de pollo en salsa especiada, arroz basmati y verduras salteadas.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Salmón al Limón <span class="price-label">$14.90</span></h4>
+                            <p>Filete de salmón, salsa de limón y eneldo, acompañado de papas al vapor.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Risotto de Champiñones <span class="price-label">$9.80</span></h4>
+                            <p>Arroz arbóreo, mezcla de setas y parmesano, cremoso y aromático.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Tarta de Manzana <span class="price-label">$4.50</span></h4>
+                            <p>Clásica tarta de manzana con masa crujiente y toque de canela.</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <h4>Brownie de Chocolate <span class="price-label">$4.80</span></h4>
+                            <p>Brownie húmedo de chocolate negro, servido con helado de vainilla.</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="art5-div2">
+                    <div class="art5-img-wrapper">
+                        <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg" alt="Plato destacado" loading="lazy">
+                        <span class="art5-img-price">$17.50</span>
+                        <span class="art5-img-label">Plato Estrella</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="art6" data-aos="fade-up">
+            <div class="art6-div2">
+                <div class="art6-img-wrapper">
+                    <img src="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg" alt="Plato destacado" loading="lazy">
+                    <span class="art6-img-price">$17.50</span>
+                    <span class="art6-img-label">Plato Estrella</span>
+                </div>
+            </div>
+            <div class="art6-div1">
+                <div class="list-items">
+                    <div class="item">
+                        <h4>Pizza Margarita <span class="price-label">$8.90</span></h4>
+                        <p>Masa fina, salsa de tomate natural, queso mozzarella y hojas frescas de albahaca.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Hamburguesa Clásica <span class="price-label">$10.50</span></h4>
+                        <p>Carne de res a la parrilla, lechuga, tomate, cebolla y aderezo especial en pan artesanal.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Ensalada Griega <span class="price-label">$7.20</span></h4>
+                        <p>Mezcla de verdes, queso feta, aceitunas, tomate cherry y vinagreta de limón.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Lasagna de Carne <span class="price-label">$12.00</span></h4>
+                        <p>Capas de pasta, carne molida, salsa pomodoro y gratinado de quesos.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Crema de Calabaza <span class="price-label">$5.70</span></h4>
+                        <p>Suave crema de calabaza asada, toque de jengibre y crocante de pan.</p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="list-items">
+                    <div class="item">
+                        <h4>Pollo al Curry <span class="price-label">$11.80</span></h4>
+                        <p>Pechuga de pollo en salsa especiada, arroz basmati y verduras salteadas.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Salmón al Limón <span class="price-label">$14.90</span></h4>
+                        <p>Filete de salmón, salsa de limón y eneldo, acompañado de papas al vapor.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Risotto de Champiñones <span class="price-label">$9.80</span></h4>
+                        <p>Arroz arbóreo, mezcla de setas y parmesano, cremoso y aromático.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Tarta de Manzana <span class="price-label">$4.50</span></h4>
+                        <p>Clásica tarta de manzana con masa crujiente y toque de canela.</p>
+                        <hr>
+                    </div>
+                    <div class="item">
+                        <h4>Brownie de Chocolate <span class="price-label">$4.80</span></h4>
+                        <p>Brownie húmedo de chocolate negro, servido con helado de vainilla.</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="art7" data-aos="fade-up">
+            <div class="art5-div-h">
+                <p>Disfrute de una auténtica experiencia gastronomica</p>
+                <h2>Platillos destacados</h2>
+            </div>
+            <div class="art7-slider-center">
+                <div class="swiper art7-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide art7-slide">
+                            <div class="art7-card">
+                                <div class="art7-img-container">
+                                    <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Pizza Margarita" loading="lazy">
+                                    <span class="art7-price">$8.90</span>
+                                </div>
+                                <h3>Pizza Margarita</h3>
+                                <p>Masa fina, salsa de tomate natural, queso mozzarella y albahaca fresca.</p>
+                            </div>
+                            <div class="art7-card">
+                                <div class="art7-img-container">
+                                    <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg" alt="Hamburguesa Clásica" loading="lazy">
+                                    <span class="art7-price">$10.50</span>
+                                </div>
+                                <h3>Hamburguesa Clásica</h3>
+                                <p>Carne de res a la parrilla, lechuga, tomate y aderezo especial en pan artesanal.</p>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide art7-slide">
+                            <div class="art7-card">
+                                <div class="art7-img-container">
+                                    <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Ensalada Griega" loading="lazy">
+                                    <span class="art7-price">$7.20</span>
+                                </div>
+                                <h3>Ensalada Griega</h3>
+                                <p>Mezcla de verdes, queso feta, aceitunas y vinagreta de limón.</p>
+                            </div>
+                            <div class="art7-card">
+                                <div class="art7-img-container">
+                                    <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Risotto de Champiñones" loading="lazy">
+                                    <span class="art7-price">$9.80</span>
+                                </div>
+                                <h3>Risotto de Champiñones</h3>
+                                <p>Arroz arbóreo, setas y parmesano, cremoso y aromático.</p>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide art7-slide">
+                            <div class="art7-card">
+                                <div class="art7-img-container">
+                                    <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Tarta de Manzana" loading="lazy">
+                                    <span class="art7-price">$4.50</span>
+                                </div>
+                                <h3>Tarta de Manzana</h3>
+                                <p>Clásica tarta con masa crujiente y manzanas frescas.</p>
+                            </div>
+                            <div class="art7-card">
+                                <div class="art7-img-container">
+                                    <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Brownie de Chocolate" loading="lazy">
+                                    <span class="art7-price">$4.80</span>
+                                </div>
+                                <h3>Brownie de Chocolate</h3>
+                                <p>Brownie húmedo de chocolate negro, servido con helado de vainilla.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination art7-swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="art7-slider-back">
+                <div class="swiper art7-back-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Cada tarjeta es un slide -->
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Pizza Margarita" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Pizza Margarita</span>
+                                    <span class="art7-back-card-price">$8.90</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg" alt="Hamburguesa Clásica" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Hamburguesa Clásica</span>
+                                    <span class="art7-back-card-price">$10.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg" alt="Ensalada Griega" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Ensalada Griega</span>
+                                    <span class="art7-back-card-price">$7.20</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg" alt="Lasagna de Carne" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Lasagna de Carne</span>
+                                    <span class="art7-back-card-price">$12.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg" alt="Risotto de Champiñones" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Risotto de Champiñones</span>
+                                    <span class="art7-back-card-price">$9.80</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg" alt="Hamburguesa Clásica" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Alitas de pollo</span>
+                                    <span class="art7-back-card-price">$10.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg" alt="Risotto de Champiñones" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Costillas de cerdo</span>
+                                    <span class="art7-back-card-price">$9.80</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg" alt="Risotto de Champiñones" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Ensalada cesar</span>
+                                    <span class="art7-back-card-price">$9.80</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Pizza Margarita" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Pizza de peperoni</span>
+                                    <span class="art7-back-card-price">$8.90</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg" alt="Hamburguesa Clásica" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Shawarma</span>
+                                    <span class="art7-back-card-price">$10.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg" alt="Ensalada Griega" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Salchipapa</span>
+                                    <span class="art7-back-card-price">$7.20</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="art7-back-card">
+                                <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg" alt="Lasagna de Carne" loading="lazy">
+                                <div class="art7-back-card-overlay">
+                                    <span class="art7-back-card-title">Hot dogs</span>
+                                    <span class="art7-back-card-price">$12.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </article>
     </section>
 
-    <!-- Slider -->
-    <section class="slider-wrapper my-5">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="image1.jpg" class="d-block w-100" alt="Slide 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="image2.jpg" class="d-block w-100" alt="Slide 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="image3.jpg" class="d-block w-100" alt="Slide 3">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Footer -->
+          <!-- Footer -->
     <footer class="py-5">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-3">
-                    <h4>Sobre Nosotros</h4>
+                    <h6>Sobre Nosotros</h6>
                     <p>Ofrecemos una experiencia gastronómica única con los mejores ingredientes y un ambiente acogedor.</p>
                 </div>
                 <div class="col-md-3">
-                    <h4>Links Rápidos</h4>
+                    <h6>Links Rápidos</h6>
                     <ul class="list-unstyled">
                         <li><a href="#" class=" text-decoration-none">Inicio</a></li>
                         <li><a href="#" class=" text-decoration-none">Menú</a></li>
@@ -213,13 +613,13 @@
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h4>Contacto</h4>
+                    <h6>Contacto</h6>
                     <p>Dirección: Calle Falsa 123</p>
                     <p>Teléfono: +123 456 789</p>
                     <p>Email: contacto@restaurant.com</p>
                 </div>
                 <div class="col-md-3">
-                    <h4>Síguenos</h4>
+                    <h6>Síguenos</h6>
                     <div>
                         <ul class="list-unstyled">
                           {{#each footerSocial}}
@@ -238,5 +638,127 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+  // Inicializa AOS
+  AOS.init();
+
+  // Helper para destrucción segura Swiper
+  function safeDestroySwiper(swiperInstance, selector) {
+    try {
+      // Solo destruye si:
+      // - existe la instancia
+      // - tiene método destroy
+      // - su elemento DOM existe en el documento
+      if (
+        swiperInstance &&
+        typeof swiperInstance.destroy === "function" &&
+        swiperInstance.el &&
+        document.body.contains(swiperInstance.el)
+      ) {
+        swiperInstance.destroy(true, true);
+      }
+    } catch (e) {
+      // Opcional: loguea si quieres debug
+      // console.warn('Error destroying swiper:', e);
+    }
+    return undefined;
+  }
+
+  // Swiper principal
+  window.mySwiperInstance = safeDestroySwiper(window.mySwiperInstance, '.mySwiper');
+  window.mySwiperInstance = new Swiper('.mySwiper', {
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+
+  // Swiper para art7-swiper
+  window.art7SwiperInstance = safeDestroySwiper(window.art7SwiperInstance, '.art7-swiper');
+  window.art7SwiperInstance = new Swiper('.art7-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    pagination: {
+      el: '.art7-swiper-pagination',
+      clickable: true,
+    },
+    loop: true,
+    autoplay: {
+      delay: 1700,
+      disableOnInteraction: false
+    },
+    speed: 4000,
+  });
+
+  // Swiper para art7-back-swiper
+  window.art7BackSwiperInstance = safeDestroySwiper(window.art7BackSwiperInstance, '.art7-back-swiper');
+  window.art7BackSwiperInstance = new Swiper('.art7-back-swiper', {
+    slidesPerView: 5,
+    spaceBetween: 24,
+    loop: true,
+    autoplay: {
+      delay: 1700,
+      disableOnInteraction: false
+    },
+    speed: 4000,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      600: {
+        slidesPerView: 3,
+        spaceBetween: 16
+      },
+      900: {
+        slidesPerView: 5,
+        spaceBetween: 24
+      }
+    }
+  });
+
+  // Navbar sticky después del header
+  const navbar = document.getElementById('mainNavbar');
+  const header = document.querySelector('header.hero-header');
+  const navbarHeight = navbar.offsetHeight;
+
+  function onScroll() {
+    const headerBottom = header.getBoundingClientRect().bottom;
+    if (headerBottom - navbarHeight <= 0) {
+      navbar.classList.add('sticky');
+    } else {
+      navbar.classList.remove('sticky');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll);
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // Efecto ZOOM en .art7-back-card al tocar/click/tap (mobile y desktop)
+  const backCards = document.querySelectorAll('.art7-back-card');
+  backCards.forEach(function(card) {
+    card.addEventListener('touchstart', function() {
+      card.classList.add('zoom-effect');
+    }, { passive: true });
+    card.addEventListener('touchend', function() {
+      card.classList.remove('zoom-effect');
+    }, { passive: true });
+    card.addEventListener('mousedown', function() {
+      card.classList.add('zoom-effect');
+    });
+    card.addEventListener('mouseup', function() {
+      card.classList.remove('zoom-effect');
+    });
+    card.addEventListener('mouseleave', function() {
+      card.classList.remove('zoom-effect');
+    });
+  });
+});
+  </script>
 </body>

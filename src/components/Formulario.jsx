@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GoogleFontsSelector from './GoogleFontsSelector';
 import './Formulario.css';
 
@@ -6,6 +6,9 @@ const Formulario = ({ config, setConfig }) => {
   const [menuSections, setMenuSections] = useState(config.menuSections || []);
   const [footerSocial, setFooterSocial] = useState(config.footerSocial || []);
 
+   useEffect(() => {
+    setMenuSections(config.menuSections || []);
+  }, [config.menuSections]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setConfig((prev) => ({
@@ -123,6 +126,36 @@ const Formulario = ({ config, setConfig }) => {
           placeholder="Descripción para SEO"
         />
       </div>
+      <div className="form-group">
+  <label>URL del Sitio:</label>
+  <input
+    type="url"
+    name="siteUrl"
+    value={config.siteUrl || ''}
+    onChange={handleChange}
+    placeholder="https://tusitio.com"
+  />
+</div>
+<div className="form-group">
+  <label>Imagen para Open Graph (og:image):</label>
+  <input
+    type="url"
+    name="ogImage"
+    value={config.ogImage || ''}
+    onChange={handleChange}
+    placeholder="URL de una imagen representativa"
+  />
+</div>
+<div className="form-group">
+  <label>Favicon (URL del icono):</label>
+  <input
+    type="url"
+    name="favicon"
+    value={config.favicon || ''}
+    onChange={handleChange}
+    placeholder="URL del favicon, ej: https://tusitio.com/favicon.ico"
+  />
+</div>
 
       {/* Selección de tipo de plantilla */}
       <div className="form-group">

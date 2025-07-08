@@ -7,12 +7,12 @@
             font-size: {{fontSize}};
         }
 
-        header h1 {
+         #h1 {
             color: {{h1Color}};
             font-size: {{h1Size}};
         }
 
-        header p {
+        #slogan {
             color: {{h1Color}};
             font-size: {{sloganFontSize}};
         }
@@ -90,21 +90,15 @@
             color: {{primaryColor}}
         }
         
-        .main-header-swiper .swiper-pagination-bullet-active {
+        .main-header-swiper .swiper-pagination-bullet-active,
+         .clientesSwiper .swiper-pagination-bullet,
+         .clientesSwiper .swiper-pagination-bullet-active {
             background: {{primaryColor}}
         }
         
-        .clientesSwiper .swiper-pagination-bullet {
-            background: {{primaryColor}};
-        }
         .clientesSwiper .swiper-pagination-bullet {
             border: 2px solid {{primaryColor}};
         }
-        
-        .clientesSwiper .swiper-pagination-bullet-active {
-            background: {{primaryColor}}
-        }
-        
         
         .divimg-art2,
         .art2-img {
@@ -122,14 +116,8 @@
 
         :root {
             --check-color: {{primaryColor}};
-        }
-
-        :root{
+            --foreground: {{duoToneForeGround}};
             --base: {{duoToneBase}}
-        }
-
-        :root{
-            --foreground: {{duoToneForeGround}}
         }
 
     </style>
@@ -162,9 +150,9 @@
                         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" alt="slide1">
                         <div class="slide-overlay"></div>
                         <div class="slide-vineta">
-                             <h1 class="display-4 slide-title">{{siteTitle}}</h1>
+                             <h1 id="h1" class="display-4 slide-title">{{siteTitle}}</h1>
                                 {{#if slogan}}
-                                <p class="lead slide-slogan">{{slogan}}</p>
+                                <p id="slogan" class="lead slide-slogan">{{slogan}}</p>
                                 {{/if}}
                         </div>
                     </div>

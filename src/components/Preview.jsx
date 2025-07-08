@@ -30,6 +30,10 @@ const Preview = ({ config }) => {
       return;
     }
 
+    console.log("Tipo de plantilla:", config.templateType);
+  console.log("menuSections:", config.menuSections);
+
+
     loadTemplate(config.templateType, config)
       .then((templateContent) => {
         const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
@@ -44,28 +48,38 @@ const Preview = ({ config }) => {
           <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
             <title>${config.siteTitle || 'Vista Previa'}</title>
-            <link href="https://fonts.googleapis.com/css2?family=${config.fontFamily.replace(/ /g, '+')}:wght@400;700&display=swap" rel="stylesheet">
-            <meta name="description" content="{{metaDescription}}">
-            <meta name="author" content="{{author}}">
-            <meta property="og:title" content="{{siteTitle}}">
-            <meta property="og:description" content="{{metaDescription}}">
-            <meta property="og:type" content="website">
-            <meta property="og:url" content="{{siteUrl}}">
-            <meta property="og:image" content="{{ogImage}}">
-            <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:title" content="{{siteTitle}}">
-            <meta name="twitter:description" content="{{metaDescription}}">
-            <meta name="twitter:image" content="{{ogImage}}">
-            <title>{{siteTitle}}</title>
-            <link rel="icon" href="{{favicon}}">
+            <meta name="description" content="${config.metaDescription || ''}" />
+            <meta name="author" content="${config.author || ''}" />
+            <meta property="og:title" content="${config.siteTitle || ''}" />
+            <meta property="og:description" content="${config.metaDescription || ''}" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="${config.siteUrl || ''}" />
+            <meta property="og:image" content="${config.ogImage || ''}" />
+            <link rel="canonical" href="${config.siteUrl || ''}" />
+
+            <!-- Twitter Card tags -->
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="${config.siteTitle || ''}" />
+            <meta name="twitter:description" content="${config.metaDescription || ''}" />
+            <meta name="twitter:image" content="${config.ogImage || ''}" />
+
+            ${config.favicon ? `<link rel="icon" href="${config.favicon}" />` : ''}
+
+            <!-- Estilos -->
             <!-- Bootstrap CSS -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <!-- Google fonts -->
+            <link href="https://fonts.googleapis.com/css2?family=${config.fontFamily.replace(/ /g, '+')}:wght@400;700&display=swap" rel="stylesheet">
+            <!-- Swiper css -->
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
             <!-- AOS CSS -->
             <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
             <link rel="stylesheet" href="/templates/styles/base.css"> <!-- Estilos básicos -->
             <link rel="stylesheet" href="${templateCSS}"> <!-- Estilos específicos de la plantilla -->
+            <!-- Bootstrap Icons (opcional, para iconos) -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
           </head>
           <body>
             ${templateContent}
